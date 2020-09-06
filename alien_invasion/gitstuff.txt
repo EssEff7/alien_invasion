@@ -1,0 +1,13 @@
+cd "C:\Users\sfite\Documents\Python Crash Course\alien_invasion"
+
+git_log
+
+git log --pretty=oneline
+
+git status
+
+git add .
+
+git commit -m "message"
+
+git commit -am "adds files and commits with message"
