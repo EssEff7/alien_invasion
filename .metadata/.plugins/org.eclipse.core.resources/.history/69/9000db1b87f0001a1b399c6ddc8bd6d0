@@ -11,5 +11,3 @@ git add .
 git commit -m "message"
 
 git commit -am "adds files and commits with message"
-
-git rm -r --cached .
