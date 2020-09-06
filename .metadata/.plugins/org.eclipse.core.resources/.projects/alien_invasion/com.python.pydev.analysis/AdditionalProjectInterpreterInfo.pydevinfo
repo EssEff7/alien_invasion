@@ -1,0 +1,41 @@
+-- VERSION_5
+-- START DISKCACHE_3
+C:\Users\sfite\Documents\Python Crash Course\alien_invasion\.metadata\.plugins\org.eclipse.core.resources\.projects\alien_invasion\com.python.pydev.analysis\v2_indexcache
+alien_invasion|1599381343477562100|C:\Users\sfite\Documents\Python Crash Course\alien_invasion\alien_invasion\alien_invasion.py
+settings|1599377000276972000|C:\Users\sfite\Documents\Python Crash Course\alien_invasion\alien_invasion\settings.py
+ship|1599381067013802100|C:\Users\sfite\Documents\Python Crash Course\alien_invasion\alien_invasion\ship.py
+-- END DISKCACHE
+-- START DICTIONARY
+12
+2=alien_invasion
+4=settings
+12=AlienInvasion.__init__
+1=C:\Users\sfite\Documents\Python Crash Course\alien_invasion\alien_invasion\alien_invasion.py
+5=C:\Users\sfite\Documents\Python Crash Course\alien_invasion\alien_invasion\ship.py
+6=ship
+8=Ship
+7=AlienInvasion
+10=Settings.__init__
+3=C:\Users\sfite\Documents\Python Crash Course\alien_invasion\alien_invasion\settings.py
+9=Settings
+11=Ship.__init__
+-- END DICTIONARY
+-- START TREE 1
+4
+ai|1|ai!1^35#5*19@
+ali|1|AlienInvasion!1^9#7*17@
+set|1|Settings!3^1#7*33@
+shi|1|Ship!5^3#7*49@
+-- END TREE
+-- START TREE 2
+9
+__i|3|__init__!7&1^11#9*18@__init__!8&5^6#9*50@__init__!9&3^4#9*34@
+bg_|1|bg_color!10&3^9#9*35@
+bli|1|blitme!8&5^17#9*50@
+ima|1|image!11&5^12#9*51@
+rec|1|rect!11&5^13#9*51@
+run|1|run_game!7&1^20#9*18@
+scr|5|screen!11&5^8#9*51@screen_height!10&3^8#9*35@screen_rect!11&5^9#9*51@screen!12&1^16#9*19@screen_width!10&3^7#9*35@
+set|1|settings!12&1^14#9*19@
+shi|1|ship!12&1^18#9*19@
+-- END TREE
