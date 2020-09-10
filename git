@@ -1,0 +1,30 @@
+[33m6ffc1b84b54fb1f7627f6cce4f166036a872d19c[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m Merge branch 'master' of https://github.com/EssEff7/alien_invasion into master
+[33m1a1e71ac997adbdc3218cfbe2d97e8dea688dc6a[m Updating the Score as Aliens Are Shot Down
+[33m268304cd4721eeb2597f98d834190a90e81a1733[m Create README.md
+[33m0ef54499c98b899e2d869757afda3f415dec2582[m Same as below, added scoreboard.py
+[33m604cf205423dbfee9ce4516a7c501def21ea38db[m Displaying The Score
+[33mfa8d73e78b4241cc9bc3dcb019c7623308fed8d9[m Modifying the Speed Settings
+[33m01633554fb9a8646508f229215f4a911027a540e[m Hiding the Mouse Cursor
+[33m721aa0ffdae8aa13ffb1e319809aa849432da41c[m Deactivating the Play Button
+[33m5519b984c8a56f36a9cdf67b6e1c5955ef5ee7d0[m Resetting the Game
+[33m336bf7a288d731497979260f273859adfc1f7d88[m Adding the Play Button
+[33mae9d66aca0d164ec9736cc7dd6eb7bc86b9e898a[m Aliens that Reach the Bottom of the Screen
+[33m86cfa7441709a328796d6a0a3fd34b8e4f8ee7a6[m Making Larger Bullets for Testing
+[33mcc5e7e3737cc8ab8c24f68fe42dd4e1517fdfb31[m Making the Fleet Move
+[33mbf2dbdd75730464c117db8568beb49f2c8115a7a[m Added bullet.py
+[33mbed2bd18fc74a1e1aef76bad181f34bf0678f40f[m Deleting old bullets
+[33m14685bf1bd2e10385506f1d206cf745e2b3b7229[m Shooting bullets
+[33mfc638831c6ded92c447a03453310c6a1c2f8ef39[m Limiting the ship's range
+[33m50bcdce6c547a8ae5e081fc6268eaf169b40284a[m gitignore fixed? also ended at Moving Both Left and Right
+[33m0b9df998974b0e92378704d5744df0d959ec9a98[m finished at Moving Both Left and Right
+[33meeb88dc2436cee65e024c1807fba39fa40d692c1[m trying to get gitignore to work
+[33m0bc45fe5748e3b05f3e705c5afc64f47d13b680b[m Untrack files in .gitignore
+[33m0530715d2fe3911e8cacbb0679f5650e9eacc514[m Same as below.
+[33m7fd0a177ade11ab240aad8ab1e98c3fc6fe1d801[m Ended at pg 316 Try It Yourself
+[33m124bbcef80b93a29fb4d349d04f0d3d3cd4c2ff2[m Messing around with git. Nothing changed since last commit
+[33mbb6c4dbc7ebe9cdac2c6f54a8ae62ce18e34dcf2[m Ended at: Refactoring: The _check_events
+[33m2c95dedbe2a6b43947276204c1a43206939cb6b2[m Refactoring: The _check_events() and _update_screen
+[33m568a5eba728d50890cfc2e7bc6dd50021295d5e9[m Refactoring: The _check_events() and _update_screen()
+[33mb3eceb0d15257f4c94ac59dd1fa3ff8ad6ea4a44[m Ended at Refactoring: The _check_events() and _update_screen()
+[33m34b5206b8db1a74eaa87dd658c7c1462293447a3[m Trying to figure git out. A lot of file clutter in here
+[33m5440d46435a817c60ffc01982050909bd0243390[m Started Alien Invasion project.
