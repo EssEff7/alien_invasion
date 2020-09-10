@@ -13,3 +13,8 @@ git commit -m "message"
 git commit -am "adds files and commits with message"
 
 git rm -r --cached .
+
+git remote add origin https://github.com/EssEff7/alien_invasion.git
+git branch -M master
+git push -u origin master
+
