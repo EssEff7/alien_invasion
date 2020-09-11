@@ -8,10 +8,17 @@ class GameStats:
         
         # Start game in an inactive state.
         self.game_active = False
-        
-        # High score should never be reset.
-        self.high_score = 0
 
+        # Read high score file to check for score or display a 0 
+
+        try:
+            filename = 'high_score.txt'
+            with open(filename) as file_object:
+                self.high_score = int(file_object.read())
+
+        except FileNotFoundError:
+            self.high_score = 0
+            
     def reset_stats(self):
         """Initialize statistics that can change during the game."""
         self.ships_left = self.settings.ship_limit
