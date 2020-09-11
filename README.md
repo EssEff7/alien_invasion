@@ -13,3 +13,9 @@ Being able to go back to a previous commit when the game funtioned was amazing a
 Having that ability allowed me to easier troubleshoot the issue and move on with the project. 
 
 Looking forward to levelling up my skills even further into larger projects after finishing the PCC book. 
+
+After finishing the book version of the game I added some of my own features:
+- New background images to show the earth and space
+- New alien and spaceship images with transparent backgrounds
+- Sound effects and background music
+- "Hall of fame" top 5 scores. Have user enter name if in the top 5.
