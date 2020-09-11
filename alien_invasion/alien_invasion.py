@@ -4,13 +4,13 @@ from time import sleep
 import pygame
 
 from settings import Settings
+from background import BackgroundImages
 from game_stats import GameStats
 from scoreboard import Scoreboard
 from button import Button
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
-
 
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
@@ -21,6 +21,9 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         self.settings.screen_width = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
+        self.space_background = BackgroundImages('images/space.png', [0, 0])
+        self.earth_background = BackgroundImages('images/earth.png', [0, 0])
+        
         pygame.display.set_caption("Alien Invasion")
 
         # Create an instance to store game statistics.
@@ -34,7 +37,7 @@ class AlienInvasion:
 
         # Make the Play button.
         self.play_button = Button(self, "Play")
-
+        
     def run_game(self):
         """Start the main loop for the game"""
         while True:
@@ -182,6 +185,11 @@ class AlienInvasion:
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen"""
         self.screen.fill(self.settings.bg_color)
+        # Background images of space and earth
+        self.screen.blit(
+            self.space_background.background_image, self.space_background.rect)
+        self.screen.blit(
+            self.earth_background.background_image, self.earth_background.rect)
         self.ship.blitme()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
