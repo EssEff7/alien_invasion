@@ -23,13 +23,17 @@ class AlienInvasion:
         self.settings.screen_height = self.screen.get_rect().height
         self.space_background = BackgroundImages('images/space.png', [0, 0])
         self.earth_background = BackgroundImages('images/earth.png', [0, 0])
-        
         pygame.display.set_caption("Alien Invasion")
-
+        
+        # Load and play background music
+        pygame.mixer.music.load("sounds/background_music.mp3") 
+        pygame.mixer.music.play(-1,0.0)
+        
         # Create an instance to store game statistics.
         # and create a scoreboard
         self.stats = GameStats(self)
         self.sb = Scoreboard(self)
+        
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
@@ -96,7 +100,10 @@ class AlienInvasion:
         elif event.key == pygame.K_q:
             sys.exit()
         elif event.key == pygame.K_SPACE:
+            pygame.mixer.Channel(1).play(
+                pygame.mixer.Sound('sounds/ship_gun.wav'))
             self._fire_bullet()
+            
         elif event.key == pygame.K_p:
             if not self.stats.game_active:
                 self._start_game()
@@ -113,7 +120,7 @@ class AlienInvasion:
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
-
+            
     def _update_bullets(self):
         """Update position of bullets and get rid of old bullets."""
         # Update bullet positions.
@@ -131,6 +138,8 @@ class AlienInvasion:
             self.bullets, self.aliens, True, True)
         
         if collisions:
+            pygame.mixer.Channel(0).play(
+                pygame.mixer.Sound('sounds/alien_hit.wav'))
             for aliens in collisions.values():
                 self.stats.score += self.settings.alien_points * len(aliens)
             self.sb.prep_score()
