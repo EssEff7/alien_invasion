@@ -11,6 +11,7 @@ from button import Button
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+from pip._vendor.colorama.ansi import Back
 
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
@@ -65,7 +66,10 @@ class AlienInvasion:
                 self._check_keydown_events(event)
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
+    
 
+         
+    
     def _check_play_button(self, mouse_pos):
         """Start a new game when the player clicks play."""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
@@ -194,7 +198,7 @@ class AlienInvasion:
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen"""
         self.screen.fill(self.settings.bg_color)
-        # Background images of space and earth
+       # Background images of space and earth
         self.screen.blit(
             self.space_background.background_image, self.space_background.rect)
         self.screen.blit(
@@ -210,6 +214,10 @@ class AlienInvasion:
         # Draw the play button if the game is inactive.
         if not self.stats.game_active:
             self.play_button.draw_button()
+            self.title_image = pygame.image.load("images/alien_invasion_title.png")
+            self.title_image_rect = self.title_image.get_rect()
+            self.title_image_rect.midbottom = self.play_button.rect.midtop
+            self.screen.blit(self.title_image, self.title_image_rect)
         
         pygame.display.flip()
 
