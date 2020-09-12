@@ -2,6 +2,8 @@ import sys
 from time import sleep
 
 import pygame
+import pygame.freetype
+import pygame_textinput
 
 from settings import Settings
 from background import BackgroundImages
@@ -11,7 +13,7 @@ from button import Button
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
-from pip._vendor.colorama.ansi import Back
+
 
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
@@ -43,6 +45,11 @@ class AlienInvasion:
         # Make the Play button.
         self.play_button = Button(self, "Play")
         
+        # Create text-input object for high score at end of game
+        self.user_input = pygame_textinput.TextInput()
+        self.text_entered = False
+        self.display_scores = False
+        
     def run_game(self):
         """Start the main loop for the game"""
         while True:
@@ -56,7 +63,8 @@ class AlienInvasion:
 
     def _check_events(self):
         """Respond to key-presses and mouse events"""
-        for event in pygame.event.get():
+        self.events = pygame.event.get()
+        for event in self.events:
             if event.type == pygame.QUIT:
                 sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
@@ -66,9 +74,6 @@ class AlienInvasion:
                 self._check_keydown_events(event)
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
-    
-
-         
     
     def _check_play_button(self, mouse_pos):
         """Start a new game when the player clicks play."""
@@ -107,7 +112,8 @@ class AlienInvasion:
             pygame.mixer.Channel(1).play(
                 pygame.mixer.Sound('sounds/ship_gun.wav'))
             self._fire_bullet()
-            
+        elif event.key == pygame.K_RETURN:
+            self.text_entered = True
         elif event.key == pygame.K_p:
             if not self.stats.game_active:
                 self._start_game()
@@ -194,11 +200,22 @@ class AlienInvasion:
         else:
             self.stats.game_active = False
             pygame.mouse.set_visible(True)
+            self.stats.game_over = True
+
+    def display_scores(self):
+        """Read from scores file and display top scores on screen."""
+        if self.display_scores:
+            filename = 'top_scores.txt'
+            with open(filename) as file_object:
+                self.top_scores = file_object.readlines()
+            for top_score in self.top_scores:
+                
+                    
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen"""
         self.screen.fill(self.settings.bg_color)
-       # Background images of space and earth
+        # Background images of space and earth
         self.screen.blit(
             self.space_background.background_image, self.space_background.rect)
         self.screen.blit(
@@ -211,14 +228,35 @@ class AlienInvasion:
         # Draw the score information.
         self.sb.show_score()
         
-        # Draw the play button if the game is inactive.
-        if not self.stats.game_active:
-            self.play_button.draw_button()
-            self.title_image = pygame.image.load("images/alien_invasion_title.png")
+        # Draw the play button if the game is inactive and no high score.
+        if not self.stats.game_active and not self.stats.game_over:
+            self.title_image = pygame.image.load(
+                "images/alien_invasion_title.png")
             self.title_image_rect = self.title_image.get_rect()
             self.title_image_rect.midbottom = self.play_button.rect.midtop
             self.screen.blit(self.title_image, self.title_image_rect)
-        
+            self.play_button.draw_button()
+           
+        # Prompt user to enter name at the end of the game.
+        if self.stats.game_over:
+            user_prompt = pygame.freetype.Font("fonts/SHOWG.ttf", 30)
+            user_prompt.render_to(
+                self.screen, (290, 500), "Type your name and press Enter to save score", (132, 222, 2))
+
+            self.user_input.update(self.events)
+            self.user_input.text_color = (132, 222, 2)
+            self.user_input.font_size = 30
+            self.user_input.set_cursor_color((132, 222, 2))
+            self.user_input.max_string_length = 15
+            self.screen.blit(self.user_input.get_surface(), (610, 550))
+            if self.text_entered:
+                filename = 'top_scores.txt'
+                with open(filename, 'w') as file_object:
+                    file_object.write(f"{self.user_input.input_string} {str(self.stats.score)}\n")
+                    self.stats.game_over = False
+                    self.display_scores = True
+                    
+            
         pygame.display.flip()
 
     def _create_fleet(self):

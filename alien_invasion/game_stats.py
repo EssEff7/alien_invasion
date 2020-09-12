@@ -8,9 +8,11 @@ class GameStats:
         
         # Start game in an inactive state.
         self.game_active = False
-
+        
+        # Initialize condition in which to display user entry for high score
+        self.game_over = False
+        
         # Read high score file to check for score or display a 0 
-
         try:
             filename = 'high_score.txt'
             with open(filename) as file_object:
