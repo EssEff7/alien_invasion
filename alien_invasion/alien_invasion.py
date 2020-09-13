@@ -201,17 +201,65 @@ class AlienInvasion:
             self.stats.game_active = False
             pygame.mouse.set_visible(True)
             self.stats.game_over = True
-
-    def display_scores(self):
+    
+    def is_integer(self, n):
+        try:
+            int(n)
+            return True
+        except ValueError:
+            return False
+        
+    def display_scores_and_names(self):
         """Read from scores file and display top scores on screen."""
-        if self.display_scores:
+        if self.display_scores and self.stats.game_active == False:
             filename = 'top_scores.txt'
             with open(filename) as file_object:
-                self.top_scores = file_object.readlines()
-            for top_score in self.top_scores:
-                
-                    
+                top_scores_names = file_object.readlines()
+            top_scores_ints = []
+            for top_score in top_scores_names:
+                if self.is_integer(top_score):
+                    top_scores_names.remove(top_score)
+                    top_scores_ints.append([int(top_score)])
+            
+            names_formatted = [x[:-1] for x in top_scores_names]
+            top_scores_dict = dict(zip(names_formatted, top_scores_ints))
 
+            sort_scores = sorted(top_scores_dict.items(), key=lambda x: x[1], reverse=True)
+            sorted_scores = [str(sorted_score) for sorted_score in sort_scores]
+            formatted_scores = [
+                item.replace("[","").replace("]", "").replace("'","").replace(
+                    "(","").replace(")","").replace(
+                        ",","") for item in sorted_scores]
+            #for sorted_score in sort_scores:
+            highest_scores = pygame.freetype.Font("fonts/SHOWG.ttf", 23)
+            highest_scores.render_to(
+                self.screen, (550, 490), "HIGH SCORES:", (132, 222, 2))
+            try:
+                highest_scores.render_to(
+                    self.screen, (550, 525), formatted_scores[0], (132, 222, 2))
+            except IndexError:
+                pass    
+            try:
+                highest_scores.render_to(
+                    self.screen, (550, 550), formatted_scores[1], (132, 222, 2))
+            except IndexError:
+                pass
+            try:
+                highest_scores.render_to(
+                    self.screen, (550, 575), formatted_scores[2], (132, 222, 2))
+            except IndexError:
+                pass
+            try:    
+                highest_scores.render_to(
+                    self.screen, (550, 600), formatted_scores[3], (132, 222, 2))
+            except IndexError:
+                pass
+            try:
+                highest_scores.render_to(
+                    self.screen, (550, 625), formatted_scores[4], (132, 222, 2))
+            except IndexError:
+                pass
+            
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen"""
         self.screen.fill(self.settings.bg_color)
@@ -251,10 +299,11 @@ class AlienInvasion:
             self.screen.blit(self.user_input.get_surface(), (610, 550))
             if self.text_entered:
                 filename = 'top_scores.txt'
-                with open(filename, 'w') as file_object:
-                    file_object.write(f"{self.user_input.input_string} {str(self.stats.score)}\n")
+                with open(filename, 'a') as file_object:
+                    file_object.write(f"{self.user_input.input_string}\n{str(self.stats.score)}\n")
                     self.stats.game_over = False
                     self.display_scores = True
+        self.display_scores_and_names()
                     
             
         pygame.display.flip()
