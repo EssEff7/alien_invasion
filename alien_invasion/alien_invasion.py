@@ -287,6 +287,14 @@ class AlienInvasion:
            
         # Prompt user to enter name at the end of the game.
         if self.stats.game_over:
+            # First timeout and show game over image.
+            self.game_over_image = pygame.image.load("images/game_over.jpg")
+            self.game_over_image_rect = self.game_over_image.get_rect()
+            #self.game_over_image_rect.midbottom = self.play_button.rect.midtop
+            self.game_over_image_rect.x = 325
+            self.game_over_image_rect.y = 150
+            self.screen.blit(self.game_over_image, self.game_over_image_rect)
+                    
             user_prompt = pygame.freetype.Font("fonts/SHOWG.ttf", 30)
             user_prompt.render_to(
                 self.screen, (290, 500), "Type your name and press Enter to save score", (132, 222, 2))
