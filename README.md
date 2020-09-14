@@ -18,4 +18,9 @@ After finishing the book version of the game I added some of my own features:
 - New background images to show the earth and space
 - New alien and spaceship images with transparent backgrounds
 - Sound effects and background music
-- "Hall of fame" top 5 scores. Have user enter name if in the top 5.
+- Top 5 scores. Have user enter name and name will be displayed if in top 5. This one was tricky for me. I ended up finding a good module for doing exactly what I needed.
+- Title image and game over image.
+
+Final note:
+The game functions as it should and all added features function normally. There are other beginner projects I would like to move on to, otherwise I would take even more time to refactor the code to make it a little prettier. Aside from that, the game and all added functions work like a charm. 
+
